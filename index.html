@@ -31,7 +31,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   /* 봄 팔레트 — 흰 종이 바탕에 새잎 초록.
@@ -49,7 +49,8 @@
 
   --kr:'IBM Plex Sans KR',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --didone:'Bodoni Moda',Georgia,serif;
+  /* 라틴 디스플레이용 별도 서체(Bodoni Moda italic)를 쓰다가 2026-07-27 제거.
+     흘림체 대신 고딕으로 통일하고, 영문은 모두 대문자 + 자간으로 처리한다. */
 
   --pad:clamp(20px,5vw,64px);
 }
@@ -99,7 +100,7 @@ header{
 /* 로고 마크. inline-block + vertical-align 로 텍스트 베이스라인에 맞춘다
    (.bar 가 align-items:baseline 이라 flex 로 바꾸면 nav 정렬이 흐트러진다) */
 .mark img{display:inline-block;height:26px;width:auto;vertical-align:-8px;margin-right:9px}
-.mark em{font-family:var(--didone);font-style:italic;font-weight:400;color:var(--red);margin-left:6px;font-size:15px}
+.mark em{font-style:normal;font-weight:600;color:var(--red);margin-left:8px;font-size:12.5px;letter-spacing:.11em}
 nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,34px)}
 nav a{
   font-size:13.5px;font-weight:500;text-decoration:none;color:var(--muted);
@@ -114,7 +115,7 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
   gap:clamp(28px,6vw,72px);align-items:center;
 }
 .sheet{padding:12px}
-.sheet svg{width:100%;height:auto;display:block}
+.sheet img{width:100%;height:auto;display:block}
 
 .hero h1{
   font-size:clamp(30px,5.2vw,52px);
@@ -122,9 +123,8 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
   margin:14px 0 0;
 }
 .hero .latin{
-  font-family:var(--didone);font-style:italic;font-weight:400;
-  font-size:clamp(19px,3vw,28px);color:var(--green);
-  display:block;letter-spacing:.01em;margin-top:6px;
+  font-weight:600;font-size:clamp(13px,1.5vw,15.5px);color:var(--green);
+  display:block;letter-spacing:.18em;margin-top:12px;
 }
 .hero p{max-width:44ch;color:var(--body);margin:20px 0 0;font-size:clamp(14.5px,1.5vw,16px)}
 
@@ -152,9 +152,17 @@ section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
 .sec-head .label{margin-left:auto}
 
 /* ---------- 도서 ---------- */
-.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:clamp(16px,2.4vw,26px)}
+/* 도서 4종에 표지가 들어가면서 카드가 커졌다. minmax 를 330px 로 올려 넓은 화면에서
+   3+1 로 떨어지지 않고 2×2 로 맞아떨어지게 한다. 도서 권수가 바뀌면 이 값을 다시 볼 것 */
+/* minmax 의 최소값을 min(330px,100%) 로 감싸야 한다. 그냥 330px 로 두면 화면이
+   330px 보다 좁을 때 트랙이 줄지 못해 가로 스크롤이 생긴다 (320px 에서 45px 넘침) */
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:clamp(16px,2.4vw,26px)}
 .book{padding:26px 24px 24px;display:flex;flex-direction:column;transition:.2s;text-decoration:none;color:inherit}
 .book:hover{transform:translateY(-3px);border-color:var(--green)}
+/* 표지 없는 카드(비즈니스 엑셀)는 그리드에서 표지 있는 카드 높이까지 늘어나면
+   아래가 수백 px 비어 버린다. 그 카드만 내용 높이에 맞춘다.
+   :has() 를 못 읽는 브라우저는 예전처럼 늘어나기만 하므로 깨지지 않는다 */
+.book:not(:has(.cover)){align-self:start}
 /* 재단 표시 */
 .book::before,.book::after{
   content:"";position:absolute;width:9px;height:9px;pointer-events:none;
@@ -163,7 +171,8 @@ section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
 .book::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--red);border-right:1px solid var(--red)}
 .book .no{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.1em;flex:none}
 .book h3{font-size:18px;font-weight:600;letter-spacing:-.025em;margin:12px 0 0;line-height:1.4}
-.book .sub{font-family:var(--didone);font-style:italic;font-size:14px;color:var(--muted);margin-top:5px;flex:none}
+.book .sub{font-size:10.5px;font-weight:500;letter-spacing:.13em;color:var(--muted);margin-top:7px;flex:none}
+.book .cover{width:100%;height:auto;margin:0 0 20px;flex:none}
 /* 설명 문단만 남는 공간을 흡수해야 카드 높이가 달라도 위쪽이 벌어지지 않는다 */
 .book p{font-size:14px;color:var(--body);margin:14px 0 0;flex:1}
 .book .meta{
@@ -237,7 +246,7 @@ footer .label{margin-left:auto}
 
 <header>
   <div class="wrap bar">
-    <a class="mark" href="#top"><img src="images/logo-mark.png" alt="" width="280" height="246">도서출판 민홀릭<em>minholic</em></a>
+    <a class="mark" href="#top"><img src="images/logo-mark.png" alt="" width="280" height="246">도서출판 민홀릭<em>MINHOLIC</em></a>
     <nav>
       <a href="#books">출간 도서</a>
       <a href="#news">소식</a>
@@ -249,87 +258,31 @@ footer .label{margin-left:auto}
 
 <main id="top">
 
-  <!-- 히어로 : 도식화 스펙 시트 -->
+  <!-- 히어로 : 대표 도서 『디지털 패션 디자인』 -->
   <div class="wrap hero">
     <div class="hero-grid">
 
       <figure class="artboard sheet" style="margin:0">
-        <svg viewBox="0 0 400 470" role="img" aria-label="교재 판형을 치수선으로 표시한 도식화">
-          <defs>
-            <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-              <path d="M0,1 L7,4 L0,7" fill="none" stroke="var(--muted)" stroke-width="1"/>
-            </marker>
-            <marker id="al" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto">
-              <path d="M8,1 L1,4 L8,7" fill="none" stroke="var(--muted)" stroke-width="1"/>
-            </marker>
-          </defs>
-
-          <!-- 재단 표시 -->
-          <g stroke="var(--red)" stroke-width="1">
-            <path d="M52,74 h-14 M62,64 v-14"/>
-            <path d="M318,74 h14 M308,64 v-14"/>
-            <path d="M52,406 h-14 M62,416 v14"/>
-            <path d="M318,406 h14 M308,416 v14"/>
-          </g>
-
-          <!-- 판면 -->
-          <rect x="62" y="74" width="246" height="332" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
-          <!-- 책등 -->
-          <line x1="80" y1="74" x2="80" y2="406" stroke="var(--ink)" stroke-width="1"/>
-          <line x1="84" y1="74" x2="84" y2="406" stroke="var(--rule)" stroke-width="1"/>
-
-          <!-- 도식화 : 민소매 원피스 플랫 -->
-          <g fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round">
-            <path d="M172,158 C182,168 210,168 220,158"/>
-            <path d="M172,158 L152,166 C142,196 140,222 141,246"/>
-            <path d="M220,158 L240,166 C250,196 252,222 251,246"/>
-            <path d="M141,246 L148,340 L244,340 L251,246"/>
-            <path d="M141,246 C146,240 148,232 149,224"/>
-            <path d="M251,246 C246,240 244,232 243,224"/>
-          </g>
-          <line x1="196" y1="166" x2="196" y2="340" stroke="var(--green)" stroke-width="1" stroke-dasharray="5 4"/>
-          <line x1="148" y1="292" x2="244" y2="292" stroke="var(--green)" stroke-width="1" stroke-dasharray="5 4"/>
-
-          <text x="196" y="384" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" letter-spacing="2.6" fill="var(--muted)">DIGITAL FASHION DESIGN</text>
-
-          <!-- 가로 치수선 -->
-          <g stroke="var(--muted)" stroke-width="1">
-            <line x1="62" y1="36" x2="62" y2="58"/>
-            <line x1="308" y1="36" x2="308" y2="58"/>
-            <line x1="62" y1="47" x2="152" y2="47" marker-start="url(#al)"/>
-            <line x1="218" y1="47" x2="308" y2="47" marker-end="url(#ar)"/>
-          </g>
-          <text x="185" y="51" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)">188</text>
-
-          <!-- 세로 치수선 -->
-          <g stroke="var(--muted)" stroke-width="1">
-            <line x1="332" y1="74" x2="354" y2="74"/>
-            <line x1="332" y1="406" x2="354" y2="406"/>
-            <line x1="343" y1="74" x2="343" y2="204" marker-start="url(#al)"/>
-            <line x1="343" y1="276" x2="343" y2="406" marker-end="url(#ar)"/>
-          </g>
-          <text x="343" y="244" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)" transform="rotate(90 343 244)">257</text>
-
-          <text x="62" y="438" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="1.6" fill="var(--muted)">UNIT : mm</text>
-          <text x="308" y="438" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="1.6" fill="var(--red)">TRIM</text>
-        </svg>
+        <img src="images/cover-digital-fashion-design.jpg"
+             alt="『디지털 패션 디자인』 표지 — 패션전공자를 위한 디지털 패션 디자인, 박민아 지음"
+             width="1100" height="1100">
       </figure>
 
       <div>
         <p class="label">도서출판 민홀릭 · 패션 전공 교재</p>
-        <h1>화면 위에서<br>옷을 그리는 법
-          <span class="latin">Digital Fashion Design</span>
+        <h1>패션전공자를 위한<br>디지털 패션 디자인
+          <span class="latin">DIGITAL FASHION DESIGN</span>
         </h1>
-        <p>일러스트레이터와 포토샵으로 패션 디자인을 처음 배우는 학생부터, 현장에서 바로 쓸 도식화와 텍스타일 작업이 필요한 실무자까지. 강의실과 작업대를 같이 생각하며 교재를 만듭니다.</p>
+        <p>일러스트레이터와 포토샵을 활용한 디지털 패션 디자인. 기초 기능부터 실무에서 바로 쓰는 작업 방식까지, 한 학기 강의 흐름에 맞춰 실습 중심으로 담았습니다.</p>
 
         <dl class="specs">
-          <div><dt>대표 도서</dt><dd>디지털 패션 디자인</dd></div>
+          <div><dt>저자</dt><dd>박민아</dd></div>
           <div><dt>개정</dt><dd>2020 개정판</dd></div>
           <div><dt>ISBN</dt><dd>979-11-962091-1-7</dd></div>
           <div><dt>설립</dt><dd>2017</dd></div>
         </dl>
 
-        <a class="cta" href="#books">출간 도서 보기 <span>→</span></a>
+        <a class="cta" href="#books">출간 도서 보기 <span>&#8594;</span></a>
       </div>
 
     </div>
@@ -340,15 +293,16 @@ footer .label{margin-left:auto}
     <div class="wrap">
       <div class="sec-head rise">
         <h2>출간 도서</h2>
-        <p class="label">Publications</p>
+        <p class="label">PUBLICATIONS</p>
       </div>
 
       <div class="books">
 
         <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46952" target="_blank" rel="noopener">
+          <img class="cover" src="images/cover-digital-fashion-design.jpg" alt="" width="1100" height="1100">
           <p class="no">01</p>
           <h3>디지털 패션 디자인</h3>
-          <p class="sub">Digital Fashion Design</p>
+          <p class="sub">DIGITAL FASHION DESIGN</p>
           <p>일러스트레이터 CC와 포토샵 CC의 기본 기능부터, 패션 실무에서 바로 쓰는 작업 방식까지 실습 중심으로 구성한 전공 교재입니다.</p>
           <div class="meta"><span>2020 개정판</span><span>979-11-962091-1-7</span></div>
         </a>
@@ -356,21 +310,23 @@ footer .label{margin-left:auto}
         <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46953" target="_blank" rel="noopener">
           <p class="no">02</p>
           <h3>비즈니스 엑셀</h3>
-          <p class="sub">Fashion Business Excel</p>
+          <p class="sub">FASHION BUSINESS EXCEL</p>
           <p>패션 실무에서 필요한 엑셀 작업을 다룹니다.</p>
         </a>
 
         <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46954" target="_blank" rel="noopener">
+          <img class="cover" src="images/cover-mandala.jpg" alt="" width="800" height="800">
           <p class="no">03</p>
           <h3>홀릭 컬러링 북 힐링 만다라</h3>
-          <p class="sub">Holic Coloring Book Mandala</p>
+          <p class="sub">HOLIC COLORING BOOK MANDALA</p>
           <p>만다라 도안으로 구성한 컬러링 북입니다.</p>
         </a>
 
         <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46955" target="_blank" rel="noopener">
+          <img class="cover" src="images/cover-butterfly.jpg" alt="" width="800" height="800">
           <p class="no">04</p>
-          <h3>홀릭 컬러링 북 나비</h3>
-          <p class="sub">Holic Coloring Book Butterfly</p>
+          <h3>홀릭 컬러링 북 II 나비</h3>
+          <p class="sub">HOLIC COLORING BOOK II BUTTERFLY</p>
           <p>나비 도안으로 구성한 컬러링 북입니다.</p>
         </a>
 
@@ -383,7 +339,7 @@ footer .label{margin-left:auto}
     <div class="wrap">
       <div class="sec-head rise">
         <h2>소식</h2>
-        <p class="label">Notice</p>
+        <p class="label">NOTICE</p>
       </div>
 
       <div class="news rise">
@@ -411,7 +367,7 @@ footer .label{margin-left:auto}
     <div class="wrap">
       <div class="sec-head rise">
         <h2>출판사 소개</h2>
-        <p class="label">About</p>
+        <p class="label">ABOUT</p>
       </div>
 
       <div class="about">
@@ -424,17 +380,17 @@ footer .label{margin-left:auto}
 
         <div class="side">
           <div class="artboard contact" id="contact">
-            <p class="label" style="margin:0 0 18px">Contact</p>
+            <p class="label" style="margin:0 0 18px">CONTACT</p>
             <dl>
-              <dt>Mail</dt><dd><a href="mailto:minholicbooks@gmail.com">minholicbooks@gmail.com</a></dd>
-              <dt>Kakao</dt><dd><a href="https://pf.kakao.com/_Gzvfxl" target="_blank" rel="noopener">카카오톡 채널</a></dd>
-              <dt>YouTube</dt><dd><a href="https://www.youtube.com/@minholicbooks2025" target="_blank" rel="noopener">@minholicbooks2025</a></dd>
+              <dt>MAIL</dt><dd><a href="mailto:minholicbooks@gmail.com">minholicbooks@gmail.com</a></dd>
+              <dt>KAKAO</dt><dd><a href="https://pf.kakao.com/_Gzvfxl" target="_blank" rel="noopener">카카오톡 채널</a></dd>
+              <dt>YOUTUBE</dt><dd><a href="https://www.youtube.com/@minholicbooks2025" target="_blank" rel="noopener">@minholicbooks2025</a></dd>
             </dl>
           </div>
 
           <a class="artboard chan rise" href="https://www.youtube.com/@minholicbooks2025" target="_blank" rel="noopener">
             <img src="images/minholic-neon.jpg" alt="민홀릭 네온 사인 로고" width="544" height="567">
-            <span><span class="label">YouTube 채널</span><span class="arw">→</span></span>
+            <span><span class="label">YOUTUBE 채널</span><span class="arw">→</span></span>
           </a>
         </div>
       </div>
@@ -446,7 +402,7 @@ footer .label{margin-left:auto}
 <footer>
   <div class="wrap bar" style="height:auto;align-items:baseline">
     <span class="label">© 2017–2026 도서출판 민홀릭</span>
-    <span class="label">Minholic Books</span>
+    <span class="label">MINHOLIC BOOKS</span>
   </div>
 </footer>
 

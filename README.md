@@ -36,6 +36,7 @@ git add -A && git commit -m "수정 내용" && git push
 | `images/logo.png` | 마크 + 민홀릭 (투명). 소개 섹션 |
 | `images/logo-silhouette.png` | 16px 파비콘 전용 실루엣 |
 | `images/minholic-neon.jpg` | 네온 로고. 소개 섹션의 유튜브 채널 타일 |
+| `images/cover-*.jpg` | 도서 표지 3종. 히어로와 도서 카드에서 씁니다 |
 | `minholic_logo1/2.jpg` | 원본 로고. 페이지에서 직접 쓰지 않고 위 파생 파일을 씁니다 |
 | `favicon-16/32/48.png` | 파비콘. 16px만 실루엣, 나머지는 마크 |
 | `apple-touch-icon.png` | iOS 홈 화면 아이콘 (180×180) |
@@ -56,8 +57,9 @@ git add -A && git commit -m "수정 내용" && git push
 
 | 항목 | 찾을 위치 |
 |---|---|
-| 판형 치수 (188 / 257) | `<svg>` 안의 `<text>` |
+| 히어로 표지·문구 | `<figure class="artboard sheet">` 의 `<img>` 와 그 옆 `<h1>`·`<dl class="specs">` |
 | 도서 카드 | `<section id="books">` 안의 `<a class="artboard book">` 블록 복사 |
+| 도서 표지 | 각 카드 안 첫 `<img class="cover">` |
 | 소식 목록 | `<section id="news">` 안의 `<a>` 블록 |
 | 연락처 | `<div class="artboard contact">` 안의 `<dl>` |
 | 색상 | 최상단 `:root` 의 `--red`, `--green`, `--wash` 등 |
@@ -67,9 +69,10 @@ git add -A && git commit -m "수정 내용" && git push
 
 - 연락처는 메일·카카오톡 채널·유튜브 3개로 확정했습니다. 전화번호·주소는 노출하지 않습니다.
 - 도서 4종은 실제 목록이지만, 02~04는 소개문이 임시 문구이고 ISBN·발행년도가 비어 있습니다.
+- 『비즈니스 엑셀』만 표지가 없어 표지 없는 카드로 두었습니다.
 - 도서 카드의 카페 링크 4개는 URL 형식을 추정한 것입니다. 눌러서 열리는지 확인해 주세요.
 - 소식 항목의 `href="#"`를 실제 링크(카페 글 등)로 바꾸면 바로 동작합니다.
-- 표지 이미지를 넣으려면 `images/` 폴더를 만들고 카드 안에 `<img>`를 추가하면 됩니다.
 - 사이트 주소 확정 후 `<head>`의 절대 URL 3곳을 교체해야 소셜 공유 미리보기가 뜹니다.
-- 색을 바꿀 때는 `:root` 토큰만 고치면 인라인 SVG까지 따라옵니다. 단 `og.png`와 아이콘
-  PNG 3개는 구워진 이미지라 따로 다시 만들어야 합니다.
+- 색을 바꿀 때는 `:root` 토큰만 고치면 됩니다. 단 `og.png`와 아이콘 PNG 4개는
+  구워진 이미지라 따로 다시 만들어야 합니다.
+- 영문은 모두 대문자, 고딕으로 씁니다 (이메일·유튜브 핸들은 예외).
