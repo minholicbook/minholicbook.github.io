@@ -144,7 +144,7 @@ section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
 
 /* ---------- 도서 ---------- */
 .books{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:clamp(16px,2.4vw,26px)}
-.book{padding:26px 24px 24px;display:flex;flex-direction:column;transition:.2s}
+.book{padding:26px 24px 24px;display:flex;flex-direction:column;transition:.2s;text-decoration:none;color:inherit}
 .book:hover{transform:translateY(-3px);border-color:var(--ink)}
 /* 재단 표시 */
 .book::before,.book::after{
@@ -152,9 +152,10 @@ section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
 }
 .book::before{top:-1px;left:-1px;border-top:1px solid var(--red);border-left:1px solid var(--red)}
 .book::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--red);border-right:1px solid var(--red)}
-.book .no{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.1em}
+.book .no{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.1em;flex:none}
 .book h3{font-size:18px;font-weight:600;letter-spacing:-.025em;margin:12px 0 0;line-height:1.4}
-.book .sub{font-family:var(--didone);font-style:italic;font-size:14px;color:var(--muted);margin-top:5px}
+.book .sub{font-family:var(--didone);font-style:italic;font-size:14px;color:var(--muted);margin-top:5px;flex:none}
+/* 설명 문단만 남는 공간을 흡수해야 카드 높이가 달라도 위쪽이 벌어지지 않는다 */
 .book p{font-size:14px;color:#4B4C52;margin:14px 0 0;flex:1}
 .book .meta{
   margin-top:20px;padding-top:14px;border-top:1px dashed var(--rule);
@@ -322,29 +323,34 @@ footer .label{margin-left:auto}
 
       <div class="books">
 
-        <article class="artboard book rise">
+        <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46952" target="_blank" rel="noopener">
           <p class="no">01</p>
           <h3>디지털 패션 디자인</h3>
           <p class="sub">Digital Fashion Design</p>
           <p>일러스트레이터 CC와 포토샵 CC의 기본 기능부터, 패션 실무에서 바로 쓰는 작업 방식까지 실습 중심으로 구성한 전공 교재입니다.</p>
           <div class="meta"><span>2020 개정판</span><span>979-11-962091-1-7</span></div>
-        </article>
+        </a>
 
-        <article class="artboard book rise">
+        <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46953" target="_blank" rel="noopener">
           <p class="no">02</p>
-          <h3>패션 도식화 실무</h3>
-          <p class="sub">Technical Flat Drawing</p>
-          <p>작업지시서에 바로 넣을 수 있는 도식화 작도법. 아이템별 기본형부터 디테일 표기와 치수 기입까지 다룹니다.</p>
-          <div class="meta"><span>샘플 항목</span><span>ISBN 000-0-0000-0000-0</span></div>
-        </article>
+          <h3>비즈니스 엑셀</h3>
+          <p class="sub">Fashion Business Excel</p>
+          <p>패션 실무에서 필요한 엑셀 작업을 다룹니다.</p>
+        </a>
 
-        <article class="artboard book rise">
+        <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46954" target="_blank" rel="noopener">
           <p class="no">03</p>
-          <h3>포토샵 텍스타일 디자인</h3>
-          <p class="sub">Textile &amp; Pattern</p>
-          <p>패턴 리피트, 컬러웨이 전개, 원단 질감 표현까지. 텍스타일 작업에 필요한 포토샵 기능만 골라 담았습니다.</p>
-          <div class="meta"><span>샘플 항목</span><span>ISBN 000-0-0000-0000-0</span></div>
-        </article>
+          <h3>홀릭 컬러링 북 힐링 만다라</h3>
+          <p class="sub">Holic Coloring Book Mandala</p>
+          <p>만다라 도안으로 구성한 컬러링 북입니다.</p>
+        </a>
+
+        <a class="artboard book rise" href="https://cafe.naver.com/minholicbook/46955" target="_blank" rel="noopener">
+          <p class="no">04</p>
+          <h3>홀릭 컬러링 북 나비</h3>
+          <p class="sub">Holic Coloring Book Butterfly</p>
+          <p>나비 도안으로 구성한 컬러링 북입니다.</p>
+        </a>
 
       </div>
     </div>
