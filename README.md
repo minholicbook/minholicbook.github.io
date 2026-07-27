@@ -56,7 +56,7 @@ git add -A && git commit -m "수정 내용" && git push
 | 도서 카드 | `<section id="books">` 안의 `<a class="artboard book">` 블록 복사 |
 | 소식 목록 | `<section id="news">` 안의 `<a>` 블록 |
 | 연락처 | `<div class="artboard contact">` 안의 `<dl>` |
-| 색상 | 최상단 `:root` 의 `--red`, `--blue` 등 |
+| 색상 | 최상단 `:root` 의 `--red`, `--green`, `--wash` 등 |
 | 사이트 주소 | `<head>` 의 `canonical`, `og:url`, `og:image` |
 
 ## 남은 작업
@@ -67,3 +67,5 @@ git add -A && git commit -m "수정 내용" && git push
 - 소식 항목의 `href="#"`를 실제 링크(카페 글 등)로 바꾸면 바로 동작합니다.
 - 표지 이미지를 넣으려면 `images/` 폴더를 만들고 카드 안에 `<img>`를 추가하면 됩니다.
 - 사이트 주소 확정 후 `<head>`의 절대 URL 3곳을 교체해야 소셜 공유 미리보기가 뜹니다.
+- 색을 바꿀 때는 `:root` 토큰만 고치면 인라인 SVG까지 따라옵니다. 단 `og.png`와 아이콘
+  PNG 3개는 구워진 이미지라 따로 다시 만들어야 합니다.
