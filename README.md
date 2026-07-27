@@ -32,8 +32,12 @@ git add -A && git commit -m "수정 내용" && git push
 | 파일 | 용도 |
 |---|---|
 | `index.html` | 홈페이지 본체 (HTML + CSS + JS 인라인) |
-| `favicon.svg` | 파비콘. 판면 + 재단 표시 브래킷 |
-| `favicon-32.png` | SVG 파비콘을 못 읽는 구형 브라우저용 폴백 |
+| `images/logo-mark.png` | 원피스 마크 (투명). 헤더·OG·아이콘 |
+| `images/logo.png` | 마크 + 민홀릭 (투명). 소개 섹션 |
+| `images/logo-silhouette.png` | 16px 파비콘 전용 실루엣 |
+| `images/minholic-neon.jpg` | 네온 로고. 소개 섹션의 유튜브 채널 타일 |
+| `minholic_logo1/2.jpg` | 원본 로고. 페이지에서 직접 쓰지 않고 위 파생 파일을 씁니다 |
+| `favicon-16/32/48.png` | 파비콘. 16px만 실루엣, 나머지는 마크 |
 | `apple-touch-icon.png` | iOS 홈 화면 아이콘 (180×180) |
 | `og.png` | 카카오톡·트위터 등에 링크를 붙일 때 뜨는 미리보기 (1200×630) |
 

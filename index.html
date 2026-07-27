@@ -9,9 +9,10 @@
 <!-- 사이트 주소가 바뀌면 아래 절대 URL 3곳(canonical, og:url, og:image)을 함께 고쳐 주세요 -->
 <link rel="canonical" href="https://minholicbook.github.io/">
 
-<!-- 파비콘 -->
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- 파비콘 — 로고 마크. 16px 은 마크가 뭉개져 외곽 실루엣 버전을 씁니다 -->
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#FFFFFF">
 
@@ -95,6 +96,9 @@ header{
   height:62px;
 }
 .mark{font-weight:700;font-size:16px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+/* 로고 마크. inline-block + vertical-align 로 텍스트 베이스라인에 맞춘다
+   (.bar 가 align-items:baseline 이라 flex 로 바꾸면 nav 정렬이 흐트러진다) */
+.mark img{display:inline-block;height:26px;width:auto;vertical-align:-8px;margin-right:9px}
 .mark em{font-family:var(--didone);font-style:italic;font-weight:400;color:var(--red);margin-left:6px;font-size:15px}
 nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,34px)}
 nav a{
@@ -182,13 +186,25 @@ section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
 /* ---------- 소개 ---------- */
 .about{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px)}
 .about p{margin:0 0 16px;font-size:15px;color:var(--body);max-width:52ch}
+.about .brandmark{width:clamp(112px,13vw,150px);height:auto;margin:0 0 28px}
+/* 오른쪽 열. grid + align-content:start 라서 카드가 텍스트 높이만큼 늘어나지 않는다 */
+.side{display:grid;gap:clamp(16px,2vw,22px);align-content:start}
 /* 흰 바탕에서는 테두리만으로 약하므로 연락처 카드만 옅은 초록을 깐다 */
-.contact{padding:30px 28px;align-self:start;background:var(--wash)}
+.contact{padding:30px 28px;background:var(--wash)}
 .contact dl{margin:0;display:grid;grid-template-columns:64px 1fr;gap:13px 16px;align-items:baseline}
 .contact dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
 .contact dd{margin:0;font-size:14px;font-weight:500;word-break:break-all}
 .contact dd a{text-decoration:none;border-bottom:1px solid var(--muted)}
 .contact dd a:hover{border-bottom-color:var(--green);color:var(--green)}
+
+/* 유튜브 채널 타일. 네온 로고는 어두운 사진이라 사이트 팔레트와 인상이 다르므로
+   테두리 안에 가둬 "채널 아트"로 읽히게 하고, 그 밖으로 번지지 않게 한다 */
+.chan{padding:12px;display:grid;gap:11px;text-decoration:none;color:inherit;transition:.2s}
+.chan:hover{border-color:var(--green)}
+.chan img{width:100%;height:auto}
+.chan>span{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.chan .arw{font-family:var(--mono);font-size:13px;color:var(--muted);transition:.2s}
+.chan:hover .arw{color:var(--green)}
 
 footer{
   border-top:1px solid var(--rule);padding:30px 0 44px;
@@ -221,7 +237,7 @@ footer .label{margin-left:auto}
 
 <header>
   <div class="wrap bar">
-    <a class="mark" href="#top">도서출판 민홀릭<em>minholic</em></a>
+    <a class="mark" href="#top"><img src="images/logo-mark.png" alt="" width="280" height="246">도서출판 민홀릭<em>minholic</em></a>
     <nav>
       <a href="#books">출간 도서</a>
       <a href="#news">소식</a>
@@ -400,18 +416,26 @@ footer .label{margin-left:auto}
 
       <div class="about">
         <div class="rise">
+          <img class="brandmark" src="images/logo.png" alt="도서출판 민홀릭 로고" width="400" height="498">
           <p>도서출판 민홀릭은 2017년부터 패션 전공 교재를 펴내고 있습니다. 프로그램 매뉴얼을 옮겨 적는 대신, 패션을 전공하는 사람이 실제로 부딪히는 순서대로 내용을 배치하는 것을 원칙으로 삼습니다.</p>
           <p>한 학기 분량의 강의 흐름, 과제로 제출할 수 있는 결과물, 그리고 졸업 후 실무에서 다시 펼쳐볼 수 있는 참고 항목. 이 세 가지가 한 권 안에 같이 있어야 교재라고 생각합니다.</p>
           <p>교재 채택, 강의용 실습 파일, 재고에 대한 문의는 언제든 연락 주세요.</p>
         </div>
 
-        <div class="artboard contact" id="contact">
-          <p class="label" style="margin:0 0 18px">Contact</p>
-          <dl>
-            <dt>Mail</dt><dd><a href="mailto:minholicbooks@gmail.com">minholicbooks@gmail.com</a></dd>
-            <dt>Kakao</dt><dd><a href="https://pf.kakao.com/_Gzvfxl" target="_blank" rel="noopener">카카오톡 채널</a></dd>
-            <dt>YouTube</dt><dd><a href="https://www.youtube.com/@minholicbooks2025" target="_blank" rel="noopener">@minholicbooks2025</a></dd>
-          </dl>
+        <div class="side">
+          <div class="artboard contact" id="contact">
+            <p class="label" style="margin:0 0 18px">Contact</p>
+            <dl>
+              <dt>Mail</dt><dd><a href="mailto:minholicbooks@gmail.com">minholicbooks@gmail.com</a></dd>
+              <dt>Kakao</dt><dd><a href="https://pf.kakao.com/_Gzvfxl" target="_blank" rel="noopener">카카오톡 채널</a></dd>
+              <dt>YouTube</dt><dd><a href="https://www.youtube.com/@minholicbooks2025" target="_blank" rel="noopener">@minholicbooks2025</a></dd>
+            </dl>
+          </div>
+
+          <a class="artboard chan rise" href="https://www.youtube.com/@minholicbooks2025" target="_blank" rel="noopener">
+            <img src="images/minholic-neon.jpg" alt="민홀릭 네온 사인 로고" width="544" height="567">
+            <span><span class="label">YouTube 채널</span><span class="arw">→</span></span>
+          </a>
         </div>
       </div>
     </div>
