@@ -147,7 +147,7 @@ Google Fonts CDN에서 불러옵니다.
 | 이메일 | `hello@example.com` |
 | 주소 | "주소를 입력해 주세요" |
 | 카카오 채널 링크 | 링크 없이 텍스트만 |
-| 사이트 절대 URL 3곳 | `https://minholicbooks.github.io/` 기준 — `canonical`, `og:url`, `og:image`. 주소 확정 시 교체 |
+| 사이트 절대 URL 3곳 | `https://minholicbook.github.io/` — 확정. 커스텀 도메인을 붙이면 `canonical`, `og:url`, `og:image` 3곳을 다시 교체 |
 | 도서 02 『패션 도식화 실무』 | **가상의 샘플** |
 | 도서 03 『포토샵 텍스타일 디자인』 | **가상의 샘플** |
 | 소식 3건 | **가상의 샘플**, `href="#"` |
@@ -158,26 +158,27 @@ Google Fonts CDN에서 불러옵니다.
 
 ## 6. 배포 (GitHub Pages)
 
-1. Public 저장소 생성
-2. 파일 전체를 루트에 push
+### 확정된 배포 대상 (2026-07-27)
+
+| 항목 | 값 |
+|---|---|
+| GitHub 조직 | `minholicbook` — 개인 계정 소유의 무료 조직 |
+| 저장소 | `minholicbook.github.io` (Public) |
+| 주소 | `https://minholicbook.github.io/` |
+
+이름을 단수(`minholicbook`)로 한 것은 기존 네이버 카페 주소(`cafe.naver.com/minholicbook`)와
+표기를 맞추기 위해서입니다. 워드마크·OG 이미지의 `MINHOLIC BOOKS` 표기와는 다르지만 의도된 것입니다.
+
+`<이름>.github.io` 형식에서 `<이름>`은 **계정 또는 조직 이름**입니다. 저장소 이름만 바꿔서는 짧은
+주소가 나오지 않고, 소유 계정 이름이 그대로 주소가 됩니다. 저장소 이름도 `<이름>.github.io`로
+똑같이 맞춰야 합니다 (다른 이름이면 `https://minholicbook.github.io/<저장소>/`처럼 경로가 붙습니다).
+
+### 절차
+
+1. 조직 안에 Public 저장소 `minholicbook.github.io` 생성 (README·.gitignore 추가하지 말 것 — 로컬과 충돌)
+2. `git remote add origin` → `git push -u origin main`
 3. Settings → Pages → Source: `Deploy from a branch` / Branch: `main` `/(root)`
-4. `https://<계정>.github.io/<저장소>/`
-
-저장소 이름을 `<계정>.github.io`로 하면 주소가 짧아집니다.
-
-### 주소를 `minholicbooks.github.io` 로 하려면
-
-`<이름>.github.io` 형식에서 `<이름>`은 **계정 또는 조직 이름**입니다. 저장소 이름만 바꿔서는 안 되고
-소유 계정 자체가 `minholicbooks` 여야 합니다. 방법 세 가지:
-
-| 방법 | 주소 | 비고 |
-|---|---|---|
-| 조직(Organization) 생성 | `minholicbooks.github.io` | **권장.** 기존 개인 계정으로 로그인한 채 무료 조직을 만들면 됨. 로그인 이원화 없음 |
-| 개인 계정 신규 가입 | `minholicbooks.github.io` | 로그인을 두 개 관리해야 함 |
-| 현재 계정 + 저장소 | `<현재계정>.github.io/minholic/` | 가입·조직 생성 불필요. 주소에 경로가 붙음 |
-
-커스텀 도메인을 붙이면 이 주소는 어차피 가려지므로, 3번으로 시작해도 나중에 바꿀 수 있습니다.
-어느 쪽이든 저장소 이름은 `<이름>.github.io` 여야 합니다 (3번은 임의 이름).
+4. 1~2분 뒤 `https://minholicbook.github.io/`
 
 **커스텀 도메인**
 - 루트에 `CNAME` 파일 (도메인만 한 줄)
@@ -232,8 +233,8 @@ GitHub Pages는 정적 파일만 서빙합니다. 대신 종속성이 없어 Net
 - [ ] 문의 폼 도입 여부 결정
 - [x] favicon, Open Graph 이미지 추가 — 2026-07-27
 - [ ] 개인정보처리방침 페이지 (문의 폼이나 댓글 도입 시 **필수**)
-- [ ] GitHub 계정/조직 이름 확정 → 원격 저장소 연결 후 push
-- [ ] push 후 `<head>` 절대 URL 3곳을 실제 주소로 교체
+- [x] GitHub 조직 이름 확정 (`minholicbook`) + `<head>` 절대 URL 3곳 반영 — 2026-07-27
+- [ ] 원격 저장소 연결 후 push → Pages 설정
 - [ ] 배포 후 카카오톡·트위터에 링크 붙여 og.png 실제로 뜨는지 확인
 
 ### 파비콘 · OG 이미지에 대해 (2026-07-27 작업)

@@ -16,8 +16,8 @@
 4. 1~2분 뒤 `https://<계정>.github.io/<저장소>/` 에서 열립니다.
 
 저장소 이름을 `<계정>.github.io`로 만들면 주소가 `https://<계정>.github.io/`로 짧아집니다.
-이때 주소에 들어가는 것은 **계정(또는 조직) 이름**입니다. `https://minholicbooks.github.io/`를 쓰려면
-`minholicbooks`라는 계정이나 조직이 있어야 하고, 저장소 이름도 `minholicbooks.github.io`여야 합니다.
+이때 주소에 들어가는 것은 **계정(또는 조직) 이름**입니다. 이 사이트는 GitHub 조직 `minholicbook`을
+쓰기로 했으므로 주소는 `https://minholicbook.github.io/`, 저장소 이름도 `minholicbook.github.io`입니다.
 
 ## 파일 구성
 
