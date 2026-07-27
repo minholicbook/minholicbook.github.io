@@ -158,13 +158,19 @@ Google Fonts CDN에서 불러옵니다.
 
 ## 6. 배포 (GitHub Pages)
 
-### 확정된 배포 대상 (2026-07-27)
+### 배포 완료 (2026-07-27)
 
 | 항목 | 값 |
 |---|---|
-| GitHub 조직 | `minholicbook` — 개인 계정 소유의 무료 조직 |
+| GitHub 조직 | `minholicbook` — 개인 계정(`asmendless-blip`) 소유의 무료 조직 |
 | 저장소 | `minholicbook.github.io` (Public) |
-| 주소 | `https://minholicbook.github.io/` |
+| 주소 | **https://minholicbook.github.io/** — 배포됨, HTTPS 강제 적용 |
+
+`<조직>.github.io` 이름의 저장소는 push하면 GitHub가 Pages를 **자동으로 켭니다.**
+Settings → Pages에서 따로 Source를 지정할 필요가 없었습니다.
+
+배포 후 확인한 것: 페이지·og.png·파비콘 3종 모두 200 응답, MIME 정상,
+`canonical`/`og:url`/`og:image` 가 실제 주소와 일치, Google Fonts 3종 응답 정상.
 
 이름을 단수(`minholicbook`)로 한 것은 기존 네이버 카페 주소(`cafe.naver.com/minholicbook`)와
 표기를 맞추기 위해서입니다. 워드마크·OG 이미지의 `MINHOLIC BOOKS` 표기와는 다르지만 의도된 것입니다.
@@ -173,12 +179,13 @@ Google Fonts CDN에서 불러옵니다.
 주소가 나오지 않고, 소유 계정 이름이 그대로 주소가 됩니다. 저장소 이름도 `<이름>.github.io`로
 똑같이 맞춰야 합니다 (다른 이름이면 `https://minholicbook.github.io/<저장소>/`처럼 경로가 붙습니다).
 
-### 절차
+### 이후 수정 반영 방법
 
-1. 조직 안에 Public 저장소 `minholicbook.github.io` 생성 (README·.gitignore 추가하지 말 것 — 로컬과 충돌)
-2. `git remote add origin` → `git push -u origin main`
-3. Settings → Pages → Source: `Deploy from a branch` / Branch: `main` `/(root)`
-4. 1~2분 뒤 `https://minholicbook.github.io/`
+`main`에 push하면 1~2분 뒤 자동 반영됩니다. 별도 빌드나 배포 명령이 없습니다.
+
+```bash
+git add -A && git commit -m "수정 내용" && git push
+```
 
 **커스텀 도메인**
 - 루트에 `CNAME` 파일 (도메인만 한 줄)
@@ -234,8 +241,8 @@ GitHub Pages는 정적 파일만 서빙합니다. 대신 종속성이 없어 Net
 - [x] favicon, Open Graph 이미지 추가 — 2026-07-27
 - [ ] 개인정보처리방침 페이지 (문의 폼이나 댓글 도입 시 **필수**)
 - [x] GitHub 조직 이름 확정 (`minholicbook`) + `<head>` 절대 URL 3곳 반영 — 2026-07-27
-- [ ] 원격 저장소 연결 후 push → Pages 설정
-- [ ] 배포 후 카카오톡·트위터에 링크 붙여 og.png 실제로 뜨는지 확인
+- [x] 원격 저장소 연결 + push + Pages 배포 — 2026-07-27
+- [ ] 카카오톡에 링크 붙여 og.png 미리보기 실제로 뜨는지 확인 (안 뜨면 카카오 디버거에서 캐시 삭제)
 
 ### 파비콘 · OG 이미지에 대해 (2026-07-27 작업)
 

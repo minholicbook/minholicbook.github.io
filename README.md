@@ -1,6 +1,14 @@
 # 도서출판 민홀릭 홈페이지
 
+**https://minholicbook.github.io/**
+
 정적 HTML 한 파일로 된 출판사 홈페이지입니다. 별도 빌드 과정 없이 GitHub Pages에 바로 올릴 수 있습니다.
+
+수정 후 `main`에 push하면 1~2분 뒤 자동 반영됩니다.
+
+```bash
+git add -A && git commit -m "수정 내용" && git push
+```
 
 ## GitHub Pages 배포
 
