@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도서출판 민홀릭 | 디지털 패션 디자인 전공 교재</title>
+<meta name="description" content="패션 전공 교재를 만드는 도서출판 민홀릭. 일러스트레이터와 포토샵으로 배우는 디지털 패션 디자인.">
+
+<!-- 사이트 주소가 확정되면 아래 절대 URL 3곳(canonical, og:url, og:image)을 함께 고쳐 주세요 -->
+<link rel="canonical" href="https://minholicbooks.github.io/">
+
+<!-- 파비콘 -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#E4E4E1">
+
+<!-- 소셜 공유 (Open Graph / 카카오톡 / 트위터) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="도서출판 민홀릭">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://minholicbooks.github.io/">
+<meta property="og:title" content="도서출판 민홀릭 | 디지털 패션 디자인 전공 교재">
+<meta property="og:description" content="일러스트레이터와 포토샵으로 배우는 패션 디자인. 강의실과 작업대를 같이 생각하며 만든 패션 전공 교재.">
+<meta property="og:image" content="https://minholicbooks.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="도서출판 민홀릭 — 교재 판형을 치수선으로 표시한 도식화">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#E4E4E1;
+  --artboard:#FCFCFA;
+  --ink:#17181C;
+  --muted:#86867F;
+  --rule:#D2D2CD;
+  --red:#CE2E22;
+  --blue:#1F3FD1;
+
+  --kr:'IBM Plex Sans KR',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --didone:'Bodoni Moda',Georgia,serif;
+
+  --pad:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:var(--kr);
+  font-weight:400;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--pad)}
+
+/* 아트보드 = 흰 판면 */
+.artboard{
+  background:var(--artboard);
+  border:1px solid var(--rule);
+  position:relative;
+}
+
+/* ---------- 헤더 ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(228,228,225,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.bar{
+  display:flex;align-items:baseline;gap:24px;
+  height:62px;
+}
+.mark{font-weight:700;font-size:16px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.mark em{font-family:var(--didone);font-style:italic;font-weight:400;color:var(--red);margin-left:6px;font-size:15px}
+nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,34px)}
+nav a{
+  font-size:13.5px;font-weight:500;text-decoration:none;color:var(--muted);
+  padding:4px 0;border-bottom:1px solid transparent;transition:.18s;
+}
+nav a:hover{color:var(--ink);border-bottom-color:var(--red)}
+
+/* ---------- 히어로 ---------- */
+.hero{padding:clamp(40px,7vw,84px) 0 clamp(48px,8vw,96px)}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
+  gap:clamp(28px,6vw,72px);align-items:center;
+}
+.sheet{padding:12px}
+.sheet svg{width:100%;height:auto;display:block}
+
+.hero h1{
+  font-size:clamp(30px,5.2vw,52px);
+  font-weight:700;letter-spacing:-.035em;line-height:1.24;
+  margin:14px 0 0;
+}
+.hero .latin{
+  font-family:var(--didone);font-style:italic;font-weight:400;
+  font-size:clamp(19px,3vw,28px);color:var(--red);
+  display:block;letter-spacing:.01em;margin-top:6px;
+}
+.hero p{max-width:44ch;color:#3D3E44;margin:20px 0 0;font-size:clamp(14.5px,1.5vw,16px)}
+
+.specs{
+  list-style:none;padding:20px 0 0;margin:26px 0 0;
+  border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px 20px;
+}
+.specs dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.specs dd{margin:3px 0 0;font-family:var(--mono);font-size:13px;font-weight:500}
+
+.cta{
+  display:inline-flex;align-items:center;gap:9px;margin-top:30px;
+  background:var(--ink);color:var(--artboard);text-decoration:none;
+  padding:13px 22px;font-size:14px;font-weight:500;
+  transition:.18s;
+}
+.cta:hover{background:var(--red)}
+.cta span{font-family:var(--mono);font-size:15px;line-height:1}
+
+/* ---------- 섹션 공통 ---------- */
+section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(26px,4vw,44px);flex-wrap:wrap}
+.sec-head h2{font-size:clamp(21px,2.6vw,27px);font-weight:600;letter-spacing:-.03em;margin:0}
+.sec-head .label{margin-left:auto}
+
+/* ---------- 도서 ---------- */
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:clamp(16px,2.4vw,26px)}
+.book{padding:26px 24px 24px;display:flex;flex-direction:column;transition:.2s}
+.book:hover{transform:translateY(-3px);border-color:var(--ink)}
+/* 재단 표시 */
+.book::before,.book::after{
+  content:"";position:absolute;width:9px;height:9px;pointer-events:none;
+}
+.book::before{top:-1px;left:-1px;border-top:1px solid var(--red);border-left:1px solid var(--red)}
+.book::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--red);border-right:1px solid var(--red)}
+.book .no{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.1em}
+.book h3{font-size:18px;font-weight:600;letter-spacing:-.025em;margin:12px 0 0;line-height:1.4}
+.book .sub{font-family:var(--didone);font-style:italic;font-size:14px;color:var(--muted);margin-top:5px}
+.book p{font-size:14px;color:#4B4C52;margin:14px 0 0;flex:1}
+.book .meta{
+  margin-top:20px;padding-top:14px;border-top:1px dashed var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  display:flex;justify-content:space-between;gap:10px;
+}
+
+/* ---------- 소식 ---------- */
+.news{border-top:1px solid var(--rule)}
+.news a{
+  display:grid;grid-template-columns:96px 1fr auto;gap:20px;align-items:baseline;
+  padding:20px 4px;border-bottom:1px solid var(--rule);text-decoration:none;transition:.16s;
+}
+.news a:hover{background:var(--artboard);padding-left:14px}
+.news time{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.news .t{font-size:15.5px;font-weight:500;letter-spacing:-.02em}
+.news .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
+
+/* ---------- 소개 ---------- */
+.about{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px)}
+.about p{margin:0 0 16px;font-size:15px;color:#3D3E44;max-width:52ch}
+.contact{padding:30px 28px}
+.contact dl{margin:0;display:grid;grid-template-columns:64px 1fr;gap:13px 16px;align-items:baseline}
+.contact dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.contact dd{margin:0;font-size:14px;font-weight:500;word-break:break-all}
+.contact dd a{text-decoration:none;border-bottom:1px solid var(--rule)}
+.contact dd a:hover{border-bottom-color:var(--red);color:var(--red)}
+
+footer{
+  border-top:1px solid var(--rule);padding:30px 0 44px;
+  display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;
+}
+footer .label{margin-left:auto}
+
+/* 스크롤 등장 */
+.rise{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rise.in{opacity:1;transform:none}
+
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .sheet{max-width:330px}
+  .about{grid-template-columns:1fr}
+  .news a{grid-template-columns:1fr;gap:5px}
+  nav{gap:16px}
+  .bar{height:auto;padding:14px 0;flex-wrap:wrap;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top">도서출판 민홀릭<em>minholic</em></a>
+    <nav>
+      <a href="#books">출간 도서</a>
+      <a href="#news">소식</a>
+      <a href="#about">출판사 소개</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 히어로 : 도식화 스펙 시트 -->
+  <div class="wrap hero">
+    <div class="hero-grid">
+
+      <figure class="artboard sheet" style="margin:0">
+        <svg viewBox="0 0 400 470" role="img" aria-label="교재 판형을 치수선으로 표시한 도식화">
+          <defs>
+            <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,1 L7,4 L0,7" fill="none" stroke="#86867F" stroke-width="1"/>
+            </marker>
+            <marker id="al" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto">
+              <path d="M8,1 L1,4 L8,7" fill="none" stroke="#86867F" stroke-width="1"/>
+            </marker>
+          </defs>
+
+          <!-- 재단 표시 -->
+          <g stroke="#CE2E22" stroke-width="1">
+            <path d="M52,74 h-14 M62,64 v-14"/>
+            <path d="M318,74 h14 M308,64 v-14"/>
+            <path d="M52,406 h-14 M62,416 v14"/>
+            <path d="M318,406 h14 M308,416 v14"/>
+          </g>
+
+          <!-- 판면 -->
+          <rect x="62" y="74" width="246" height="332" fill="none" stroke="#17181C" stroke-width="1.4"/>
+          <!-- 책등 -->
+          <line x1="80" y1="74" x2="80" y2="406" stroke="#17181C" stroke-width="1"/>
+          <line x1="84" y1="74" x2="84" y2="406" stroke="#D2D2CD" stroke-width="1"/>
+
+          <!-- 도식화 : 민소매 원피스 플랫 -->
+          <g fill="none" stroke="#17181C" stroke-width="1.2" stroke-linejoin="round">
+            <path d="M172,158 C182,168 210,168 220,158"/>
+            <path d="M172,158 L152,166 C142,196 140,222 141,246"/>
+            <path d="M220,158 L240,166 C250,196 252,222 251,246"/>
+            <path d="M141,246 L148,340 L244,340 L251,246"/>
+            <path d="M141,246 C146,240 148,232 149,224"/>
+            <path d="M251,246 C246,240 244,232 243,224"/>
+          </g>
+          <line x1="196" y1="166" x2="196" y2="340" stroke="#1F3FD1" stroke-width="1" stroke-dasharray="5 4"/>
+          <line x1="148" y1="292" x2="244" y2="292" stroke="#1F3FD1" stroke-width="1" stroke-dasharray="5 4"/>
+
+          <text x="196" y="384" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" letter-spacing="2.6" fill="#86867F">DIGITAL FASHION DESIGN</text>
+
+          <!-- 가로 치수선 -->
+          <g stroke="#86867F" stroke-width="1">
+            <line x1="62" y1="36" x2="62" y2="58"/>
+            <line x1="308" y1="36" x2="308" y2="58"/>
+            <line x1="62" y1="47" x2="152" y2="47" marker-start="url(#al)"/>
+            <line x1="218" y1="47" x2="308" y2="47" marker-end="url(#ar)"/>
+          </g>
+          <text x="185" y="51" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#17181C">188</text>
+
+          <!-- 세로 치수선 -->
+          <g stroke="#86867F" stroke-width="1">
+            <line x1="332" y1="74" x2="354" y2="74"/>
+            <line x1="332" y1="406" x2="354" y2="406"/>
+            <line x1="343" y1="74" x2="343" y2="204" marker-start="url(#al)"/>
+            <line x1="343" y1="276" x2="343" y2="406" marker-end="url(#ar)"/>
+          </g>
+          <text x="343" y="244" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#17181C" transform="rotate(90 343 244)">257</text>
+
+          <text x="62" y="438" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="1.6" fill="#86867F">UNIT : mm</text>
+          <text x="308" y="438" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="1.6" fill="#CE2E22">TRIM</text>
+        </svg>
+      </figure>
+
+      <div>
+        <p class="label">도서출판 민홀릭 · 패션 전공 교재</p>
+        <h1>화면 위에서<br>옷을 그리는 법
+          <span class="latin">Digital Fashion Design</span>
+        </h1>
+        <p>일러스트레이터와 포토샵으로 패션 디자인을 처음 배우는 학생부터, 현장에서 바로 쓸 도식화와 텍스타일 작업이 필요한 실무자까지. 강의실과 작업대를 같이 생각하며 교재를 만듭니다.</p>
+
+        <dl class="specs">
+          <div><dt>대표 도서</dt><dd>디지털 패션 디자인</dd></div>
+          <div><dt>개정</dt><dd>2020 개정판</dd></div>
+          <div><dt>ISBN</dt><dd>979-11-962091-1-7</dd></div>
+          <div><dt>설립</dt><dd>2017</dd></div>
+        </dl>
+
+        <a class="cta" href="#books">출간 도서 보기 <span>→</span></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 출간 도서 -->
+  <section id="books">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <h2>출간 도서</h2>
+        <p class="label">Publications</p>
+      </div>
+
+      <div class="books">
+
+        <article class="artboard book rise">
+          <p class="no">01</p>
+          <h3>디지털 패션 디자인</h3>
+          <p class="sub">Digital Fashion Design</p>
+          <p>일러스트레이터 CC와 포토샵 CC의 기본 기능부터, 패션 실무에서 바로 쓰는 작업 방식까지 실습 중심으로 구성한 전공 교재입니다.</p>
+          <div class="meta"><span>2020 개정판</span><span>979-11-962091-1-7</span></div>
+        </article>
+
+        <article class="artboard book rise">
+          <p class="no">02</p>
+          <h3>패션 도식화 실무</h3>
+          <p class="sub">Technical Flat Drawing</p>
+          <p>작업지시서에 바로 넣을 수 있는 도식화 작도법. 아이템별 기본형부터 디테일 표기와 치수 기입까지 다룹니다.</p>
+          <div class="meta"><span>샘플 항목</span><span>ISBN 000-0-0000-0000-0</span></div>
+        </article>
+
+        <article class="artboard book rise">
+          <p class="no">03</p>
+          <h3>포토샵 텍스타일 디자인</h3>
+          <p class="sub">Textile &amp; Pattern</p>
+          <p>패턴 리피트, 컬러웨이 전개, 원단 질감 표현까지. 텍스타일 작업에 필요한 포토샵 기능만 골라 담았습니다.</p>
+          <div class="meta"><span>샘플 항목</span><span>ISBN 000-0-0000-0000-0</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 소식 -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <h2>소식</h2>
+        <p class="label">Notice</p>
+      </div>
+
+      <div class="news rise">
+        <a href="#">
+          <time datetime="2026-07-10">2026.07.10</time>
+          <span class="t">2학기 교재 채택 문의 안내</span>
+          <span class="tag">공지</span>
+        </a>
+        <a href="#">
+          <time datetime="2026-05-22">2026.05.22</time>
+          <span class="t">『디지털 패션 디자인』 실습 예제 파일 업데이트</span>
+          <span class="tag">자료</span>
+        </a>
+        <a href="#">
+          <time datetime="2026-03-04">2026.03.04</time>
+          <span class="t">재고 확인 후 주문 부탁드립니다</span>
+          <span class="tag">주문</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 소개 + 문의 -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <h2>출판사 소개</h2>
+        <p class="label">About</p>
+      </div>
+
+      <div class="about">
+        <div class="rise">
+          <p>도서출판 민홀릭은 2017년부터 패션 전공 교재를 펴내고 있습니다. 프로그램 매뉴얼을 옮겨 적는 대신, 패션을 전공하는 사람이 실제로 부딪히는 순서대로 내용을 배치하는 것을 원칙으로 삼습니다.</p>
+          <p>한 학기 분량의 강의 흐름, 과제로 제출할 수 있는 결과물, 그리고 졸업 후 실무에서 다시 펼쳐볼 수 있는 참고 항목. 이 세 가지가 한 권 안에 같이 있어야 교재라고 생각합니다.</p>
+          <p>교재 채택, 견본 도서, 강의용 실습 파일에 대한 문의는 언제든 연락 주세요.</p>
+        </div>
+
+        <div class="artboard contact" id="contact">
+          <p class="label" style="margin:0 0 18px">Contact</p>
+          <dl>
+            <dt>Tel</dt><dd>000-0000-0000</dd>
+            <dt>Mail</dt><dd><a href="mailto:hello@example.com">hello@example.com</a></dd>
+            <dt>Kakao</dt><dd>카카오톡 채널 문의</dd>
+            <dt>Addr</dt><dd>주소를 입력해 주세요</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap bar" style="height:auto;align-items:baseline">
+    <span class="label">© 2017–2026 도서출판 민홀릭</span>
+    <span class="label">Minholic Books</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rise');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+
+</body>
+</html>
