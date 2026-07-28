@@ -109,7 +109,9 @@ nav a{
 nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
 
 /* ---------- 히어로 ---------- */
-.hero{padding:clamp(40px,7vw,84px) 0 clamp(48px,8vw,96px)}
+/* 세로 여백만 지정한다. padding 단축 속성을 쓰면 .wrap 의 좌우 여백(var(--pad))이
+   0 으로 덮여서 좁은 화면에서 히어로만 화면 끝에 붙는다 */
+.hero{padding-top:clamp(40px,7vw,84px);padding-bottom:clamp(48px,8vw,96px)}
 .hero-grid{
   display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
   gap:clamp(28px,6vw,72px);align-items:center;
@@ -131,7 +133,10 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
 .specs{
   list-style:none;padding:20px 0 0;margin:26px 0 0;
   border-top:1px solid var(--rule);
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px 20px;
+  /* 항목이 4개다. min() 으로 감싼 160px 은 폭에 따라 2열(넓음)→2열(모바일)→1열(320px)
+     로만 떨어져서 3+1 처럼 한 칸이 외로 남지 않는다. ISBN 이 하이픈에서 잘리지 않을
+     최소 칼럼 폭(약 133px)도 확보된다 */
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:16px 20px;
 }
 .specs dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
 .specs dd{margin:3px 0 0;font-family:var(--mono);font-size:13px;font-weight:500}
@@ -233,7 +238,8 @@ footer .label{margin-left:auto}
   .about{grid-template-columns:1fr}
   .news a{grid-template-columns:1fr;gap:5px}
   nav{gap:16px}
-  .bar{height:auto;padding:14px 0;flex-wrap:wrap;gap:10px}
+  /* .bar 도 padding 단축 속성을 쓰면 .wrap 의 좌우 여백이 0 으로 덮인다 */
+  .bar{height:auto;padding-top:14px;padding-bottom:14px;flex-wrap:wrap;gap:10px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
