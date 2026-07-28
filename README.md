@@ -4,6 +4,8 @@
 
 정적 HTML 한 파일로 된 출판사 홈페이지입니다. 별도 빌드 과정 없이 GitHub Pages에 바로 올릴 수 있습니다.
 
+지금까지의 수정 내역은 [CHANGELOG.md](CHANGELOG.md), 디자인 규칙과 주의사항은 [CLAUDE.md](CLAUDE.md) 에 있습니다.
+
 수정 후 `main`에 push하면 1~2분 뒤 자동 반영됩니다.
 
 ```bash
@@ -42,6 +44,8 @@ git add -A && git commit -m "수정 내용" && git push
 | `apple-touch-icon.png` | iOS 홈 화면 아이콘 (180×180) |
 | `og.png` | 카카오톡·트위터 등에 링크를 붙일 때 뜨는 미리보기 (1200×630) |
 | `tools/make-og.py` | 위 `og.png`·파비콘을 다시 굽는 스크립트. 페이지 빌드와는 무관합니다 |
+| `CHANGELOG.md` | 날짜별 수정 내역 |
+| `CLAUDE.md` | 디자인 규칙·결정 사항·주의할 함정 |
 
 > 사이트 주소는 `https://minholicbook.github.io/`로 확정되어 `index.html` `<head>`의 절대 URL
 > 3곳(`canonical`, `og:url`, `og:image`)에 이미 반영돼 있습니다. **나중에 커스텀 도메인을 붙이면**
