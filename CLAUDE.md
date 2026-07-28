@@ -30,7 +30,7 @@
 | 항목 | Contact 카드 라벨 | 값 |
 |---|---|---|
 | 이메일 | `MAIL` | `minholicbooks@gmail.com` |
-| 카카오톡 채널 | `CHAT` | https://pf.kakao.com/_Gzvfxl |
+| 카카오톡 채널 | `CHAT` | https://pf.kakao.com/_Gzvfxl (표시 텍스트는 `@MINHOLICBOOKS`) |
 | 유튜브 | `YOUTUBE` | https://www.youtube.com/@minholicbooks2025 |
 | 네이버 카페 | `STUDY` | https://cafe.naver.com/minholicbook |
 
@@ -39,10 +39,19 @@
 네이버 카페 링크입니다 — 도서 카드 4개가 개별 글로 연결되는 것과 별개로, 카페 자체(메인)로
 가는 진입점입니다.
 
-`dd` 표시 텍스트는 네 줄 모두 **주소 그 자체**를 보여줍니다 (`MAIL` → 메일 주소,
+`dd` 표시 텍스트는 네 줄 모두 **주소(또는 핸들) 그 자체**를 보여줍니다 (`MAIL` → 메일 주소,
 `YOUTUBE` → `@핸들`). 처음에는 `CHAT`·`STUDY` 두 줄만 "카카오톡 채널"·"네이버 카페" 같은
-한글 설명을 달았는데, 나머지 두 줄과 결이 달라 `pf.kakao.com/_Gzvfxl`·`cafe.naver.com/minholicbook`
-로 통일했습니다. 링크가 어디로 가는지 클릭 전에 주소로 바로 드러나는 것도 장점입니다.
+한글 설명을 달았다가, 나머지 두 줄과 결을 맞추려고 `pf.kakao.com/_Gzvfxl`·
+`cafe.naver.com/minholicbook` 로 한 번 통일했습니다.
+
+**`CHAT` 표시 텍스트는 이후 다시 `@MINHOLICBOOKS`로 바꿨습니다 (2026-07-28).** 사용자가 카카오톡
+채널 프로필 카드 캡처(QR 코드 옆 "카카오톡 채널 ID : @MINHOLICBOOKS")를 보여줘 이게 채널의
+공식 검색용 ID임을 확인했습니다. **주의 — `href`는 여전히 `https://pf.kakao.com/_Gzvfxl`입니다,
+`https://pf.kakao.com/@minholicbooks`로 바꾸지 마세요.** 실제로 브라우저로 열어보면 404
+("페이지를 찾을 수 없습니다")가 뜹니다 — 이 채널 ID는 카카오톡 앱 안에서 채널을 검색할 때
+쓰는 아이디이지, `pf.kakao.com/@아이디` 형태의 웹 URL로는 연결되지 않는 것으로 확인됐습니다.
+그래서 이 한 줄만 예외적으로 **표시 텍스트와 실제 링크 주소가 다릅니다** (다른 세 줄은 표시
+텍스트가 곧 href의 일부와 같습니다).
 
 **전화번호와 주소는 노출하지 않습니다. 견본 도서 신청 안내도 넣지 않습니다.**
 소개문 마지막 문단과 Contact 카드에서 모두 뺐으니, 문구를 다시 쓸 때도 되살리지 마세요.
