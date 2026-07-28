@@ -41,6 +41,7 @@ git add -A && git commit -m "수정 내용" && git push
 | `favicon-16/32/48.png` | 파비콘. 16px만 실루엣, 나머지는 마크 |
 | `apple-touch-icon.png` | iOS 홈 화면 아이콘 (180×180) |
 | `og.png` | 카카오톡·트위터 등에 링크를 붙일 때 뜨는 미리보기 (1200×630) |
+| `tools/make-og.py` | 위 `og.png`·파비콘을 다시 굽는 스크립트. 페이지 빌드와는 무관합니다 |
 
 > 사이트 주소는 `https://minholicbook.github.io/`로 확정되어 `index.html` `<head>`의 절대 URL
 > 3곳(`canonical`, `og:url`, `og:image`)에 이미 반영돼 있습니다. **나중에 커스텀 도메인을 붙이면**
@@ -75,5 +76,10 @@ git add -A && git commit -m "수정 내용" && git push
 - 도서 카드의 카페 링크 4개는 실제로 열리는 것을 확인했습니다.
 - 소식 3건은 가상 샘플(`href="#"`)입니다 — 섹션 자체를 유지할지 고민 중입니다.
 - 색을 바꿀 때는 `:root` 토큰만 고치면 됩니다. 단 `og.png`와 아이콘 PNG 4개는
-  구워진 이미지라 따로 다시 만들어야 합니다.
+  구워진 이미지라 따로 다시 만들어야 합니다 — 스크립트 안의 색 상수도 같이 고친 뒤
+  아래 명령을 실행하세요 (Pillow 필요, 윈도우 전용).
+
+  ```bash
+  python tools/make-og.py
+  ```
 - 영문은 모두 대문자, 고딕으로 씁니다 (이메일·유튜브 핸들은 예외).
