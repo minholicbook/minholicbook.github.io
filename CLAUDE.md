@@ -235,7 +235,7 @@ Google Fonts CDN에서 불러옵니다.
 | 이메일 | `minholicbooks@gmail.com` | 메일 주소를 대문자로 표기하면 오독·오타를 유발합니다 |
 | 유튜브 핸들 | `@minholicbooks2025` | 핸들은 표기 그대로 보여야 채널을 알아볼 수 있습니다 |
 
-`.contact dt`(MAIL/KAKAO/YOUTUBE)와 `.label`은 CSS `text-transform:uppercase`로도 대문자가
+`.contact dt`(MAIL/CHAT/YOUTUBE/STUDY)와 `.label`은 CSS `text-transform:uppercase`로도 대문자가
 되지만, 복사해 붙일 때도 대문자가 유지되도록 **HTML 원문 자체를 대문자로** 적었습니다.
 
 `og.png` 는 웹폰트를 쓸 수 없어 시스템 폰트로 대체합니다 (§6 참고).
