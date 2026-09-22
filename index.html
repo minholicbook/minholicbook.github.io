@@ -118,7 +118,12 @@ header{
 /* 로고 마크. inline-block + vertical-align 로 텍스트 베이스라인에 맞춘다
    (.bar 가 align-items:baseline 이라 flex 로 바꾸면 nav 정렬이 흐트러진다) */
 .mark img{display:inline-block;height:26px;width:auto;vertical-align:-8px;margin-right:9px}
-.mark em{font-family:var(--latin);font-style:normal;font-weight:700;color:var(--green);margin-left:8px;font-size:17px;letter-spacing:.08em}
+.mark em{
+  font-family:var(--latin);font-style:normal;font-weight:700;color:var(--green);
+  margin-left:8px;font-size:17px;letter-spacing:.08em;
+  /* KoPub돋움체 Bold가 IBM Plex Sans KR Bold보다 획이 가늘어, 합성 스트로크로 두께를 보강한다 */
+  -webkit-text-stroke:.04em currentColor;paint-order:stroke fill;
+}
 nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,34px)}
 nav a{
   font-size:13.5px;font-weight:500;text-decoration:none;color:var(--muted);
@@ -146,6 +151,8 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
   font-family:var(--latin);
   font-weight:700;font-size:clamp(16px,2.7vw,24px);color:var(--red);
   display:block;letter-spacing:.13em;margin-top:14px;
+  /* KoPub돋움체 Bold가 IBM Plex Sans KR Bold보다 획이 가늘어, 합성 스트로크로 두께를 보강한다 */
+  -webkit-text-stroke:.04em currentColor;paint-order:stroke fill;
 }
 .hero p{max-width:44ch;color:var(--body);margin:20px 0 0;font-size:clamp(14.5px,1.5vw,16px)}
 
