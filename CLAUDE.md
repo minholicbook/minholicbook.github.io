@@ -262,6 +262,18 @@ earlyaccess/`)에는 KoPub**바탕체**만 있고 돋움체는 없습니다. 대
 `.book .sub`(도서 부제, 500)는 대상이 아니라 그대로 뒀습니다 — 부제는 라벨 성격이라 워드마크·
 히어로만큼 굵게 강조할 필요가 없다는 판단입니다.
 
+**같은 날 — 700으로도 부족해 합성 스트로크(`-webkit-text-stroke`)를 추가.** 사용자가
+실제 화면을 보고 "처음에 있었던 글꼴(IBM Plex Sans KR)처럼 더 두껍게" 요청했습니다.
+원인을 스크린샷으로 직접 비교해 확인했습니다 — **KoPub Dotum의 Bold(700)는 IBM Plex
+Sans KR의 Bold(700)보다 획이 눈에 띄게 가늡니다.** 배포되는 굵기가 Light/Medium/Bold
+3종뿐이라 더 무거운 네이티브 굵기가 없어서, `.mark em`·`.hero .latin`에
+`-webkit-text-stroke:.04em currentColor;paint-order:stroke fill;`를 추가해 윤곽선을
+덧그리는 방식으로 두께를 보강했습니다. em 단위를 쓴 이유는 두 요소의 글자 크기가 달라도
+(`.mark em` 17px vs `.hero .latin` 16~24px clamp) 같은 비율로 두꺼워지게 하기 위해서입니다.
+0.3px 단위로 0.3~1.1px 사이를 스크린샷으로 비교해 `0.04em`(17px에서 약 0.7px, 24px에서
+약 1px)을 골랐습니다 — 원래 IBM Plex Bold와 가장 가까운 두께입니다. `paint-order:stroke
+fill`은 스트로크가 글자 안쪽을 덮지 않고 바깥으로만 더해지게 합니다.
+
 **라이선스** — KoPub서체는 문화체육관광부·한국출판인회의 소유로, 무료 사용·복제·재배포가
 허용됩니다(서체 자체를 유료 판매하는 것만 금지). `fonts/kopub-dotum/LICENSE.md`에 약관
 원문을 그대로 넣어 재배포 고지 의무를 지켰습니다.
