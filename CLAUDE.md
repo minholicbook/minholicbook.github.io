@@ -68,7 +68,14 @@
 
 ```
 /
-├── index.html            # 홈페이지 본체 (HTML + CSS + JS 인라인, 외부 의존성은 Google Fonts뿐)
+├── index.html            # 홈페이지 본체 (HTML + CSS + JS 인라인. 외부 CDN 의존성은 Google
+│                          #   Fonts뿐 — KoPub Dotum은 fonts/ 에 자체 호스팅, §3-3-1 참고)
+├── fonts/
+│   └── kopub-dotum/
+│       ├── KoPubDotum-Light.woff   # 300 — 순수 영문 3곳(워드마크·히어로 라틴·도서 부제) 전용
+│       ├── KoPubDotum-Medium.woff  # 400
+│       ├── KoPubDotum-Bold.woff    # 700
+│       └── LICENSE.md              # 한국출판인회의(KOPUS) 배포 약관 원문 (재배포 고지 의무)
 ├── images/
 │   ├── logo-mark.png       # 원피스 마크만 (투명). 헤더·OG·아이콘용
 │   ├── logo.png            # 마크 + 민홀릭 (투명). 소개 섹션용
@@ -223,19 +230,48 @@ PNG보다 우선하므로, 남겨두면 로고 파비콘이 절대 표시되지 
 
 | 역할 | 서체 | 사용처 |
 |---|---|---|
-| 본문·제목 | **IBM Plex Sans KR** (300–700) | 한글 전반, UI, **영문 전부** |
+| 본문·제목 | **IBM Plex Sans KR** (300–700) | 한글 전반, UI |
 | 라벨·수치 | **IBM Plex Mono** (400–500) | 섹션 라벨, ISBN, 날짜, 스펙값 |
+| 순수 영문(라틴 3곳) | **KoPub Dotum** (300/400/700) | 워드마크 `MINHOLIC`, 히어로 라틴, 도서 부제 |
 
-Google Fonts CDN에서 불러옵니다.
+IBM Plex 두 종은 Google Fonts CDN에서, KoPub Dotum은 **저장소에 직접 넣어 자체
+호스팅**합니다 (Google Fonts에 없음 — §3-3-1 참고).
+
+### 3-3-1. KoPub Dotum — 순수 영문 3곳 전용 (2026-09-22 도입)
+
+**적용 범위가 좁습니다.** 한글 본문(`--kr`)과 라벨·수치(`--mono`)는 그대로 두고,
+**`.mark em`(헤더 워드마크 `MINHOLIC`), `.hero .latin`(히어로 라틴), `.book .sub`(도서
+부제) 세 곳** — 한글이 절대 섞이지 않는 순수 영문 요소만 CSS 변수 `--latin`(`'KoPub
+Dotum',var(--kr)`)으로 바꿨습니다. `PUBLICATIONS`·`NOTICE`·`MAIL`·`CHAT` 같은
+라벨류는 **`--mono`(IBM Plex Mono) 역할**이라 대상이 아닙니다 — "영문 글꼴"이라도
+라벨·수치는 별도 타이포그래피 역할이라는 원래 설계(§3-3 표)를 그대로 따른 것입니다.
+
+**Google Fonts에 없어 자체 호스팅합니다.** Google 얼리액세스(`fonts.googleapis.com/
+earlyaccess/`)에는 KoPub**바탕체**만 있고 돋움체는 없습니다. 대신 저작권자(한국출판인회의)가
+배포하는 원본 폰트 파일을 그대로 받아 `fonts/kopub-dotum/`에 넣었습니다 —
+`KoPubDotum-{Light,Medium,Bold}.woff` + 라이선스 원문(`LICENSE.md`, 재배포 시 약관 고지
+의무가 있어 동봉). woff 3종 합쳐 약 5MB지만, 실제로 쓰는 굵기(500·600)에 가장 가까운
+파일만 브라우저가 지연 로드합니다. **jsDelivr 같은 새 외부 CDN은 쓰지 않았습니다** —
+"외부 의존성은 Google Fonts뿐" 원칙에 가장 가깝게, 아예 외부 도메인 없이 저장소 자체에서
+서빙합니다.
+
+**라이선스** — KoPub서체는 문화체육관광부·한국출판인회의 소유로, 무료 사용·복제·재배포가
+허용됩니다(서체 자체를 유료 판매하는 것만 금지). `fonts/kopub-dotum/LICENSE.md`에 약관
+원문을 그대로 넣어 재배포 고지 의무를 지켰습니다.
+
+데스크톱 1440px·모바일 390px 스크린샷으로 렌더링 확인, 레이아웃 넘침 없음.
 
 ### 영문 표기 규칙 (2026-07-27 결정)
 
 - **영문은 모두 대문자**로 씁니다. `MINHOLIC`, `DIGITAL FASHION DESIGN`, `PUBLICATIONS` 등.
-- **흘림체(이탤릭·세리프)를 쓰지 않습니다.** 고딕(IBM Plex Sans KR)으로 통일합니다.
+- **흘림체(이탤릭·세리프)를 쓰지 않습니다.** 고딕 계열(IBM Plex Sans KR / KoPub Dotum)로
+  통일합니다.
 - 대문자는 뭉쳐 보이므로 **자간을 넉넉히** 줍니다 (`letter-spacing` 0.11~0.18em).
 
 원래 라틴 디스플레이용으로 **Bodoni Moda italic** 을 썼습니다 (워드마크, 히어로 라틴, 도서 부제).
-2026-07-27에 전부 제거하고 Google Fonts 요청에서도 빼서 폰트 하나를 덜 받습니다.
+2026-07-27에 전부 제거하고 Google Fonts 요청에서도 빼서 폰트 하나를 덜 받았다가,
+2026-09-22에 같은 세 자리에 **KoPub Dotum**을 다시 넣었습니다 (위 §3-3-1). 흘림체가
+아니라 고딕 계열 서체로 바뀐 것이라 이 규칙과 충돌하지 않습니다.
 
 **예외 두 곳 — 대문자로 바꾸지 않았습니다.**
 
