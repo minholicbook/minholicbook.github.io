@@ -122,7 +122,7 @@ header{
   font-family:var(--latin);font-style:normal;font-weight:700;color:var(--green);
   margin-left:8px;font-size:17px;letter-spacing:.08em;
   /* KoPub돋움체 Bold가 IBM Plex Sans KR Bold보다 획이 가늘어, 합성 스트로크로 두께를 보강한다 */
-  -webkit-text-stroke:.04em currentColor;paint-order:stroke fill;
+  -webkit-text-stroke:.07em currentColor;paint-order:stroke fill;
 }
 nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,34px)}
 nav a{
@@ -149,10 +149,11 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
 }
 .hero .latin{
   font-family:var(--latin);
-  font-weight:700;font-size:clamp(16px,2.7vw,24px);color:var(--red);
+  /* 24px→29px — 위 한글 제목(h1) 마지막 줄 "디지털 패션 디자인"과 너비가 비슷해지도록 키움 */
+  font-weight:700;font-size:clamp(19px,3.3vw,29px);color:var(--red);
   display:block;letter-spacing:.13em;margin-top:14px;
   /* KoPub돋움체 Bold가 IBM Plex Sans KR Bold보다 획이 가늘어, 합성 스트로크로 두께를 보강한다 */
-  -webkit-text-stroke:.04em currentColor;paint-order:stroke fill;
+  -webkit-text-stroke:.07em currentColor;paint-order:stroke fill;
 }
 .hero p{max-width:44ch;color:var(--body);margin:20px 0 0;font-size:clamp(14.5px,1.5vw,16px)}
 
