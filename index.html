@@ -50,9 +50,27 @@
   --kr:'IBM Plex Sans KR',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
   /* 라틴 디스플레이용 별도 서체(Bodoni Moda italic)를 쓰다가 2026-07-27 제거.
-     흘림체 대신 고딕으로 통일하고, 영문은 모두 대문자 + 자간으로 처리한다. */
+     흘림체 대신 고딕으로 통일하고, 영문은 모두 대문자 + 자간으로 처리한다.
+     2026-09-22 — 워드마크·히어로 라틴·도서 부제(순수 영문 3곳)만 KoPub돋움체로 다시
+     분리했다. 라벨·수치(--mono 역할)와 한글 본문(--kr)은 그대로 둔다. §3-3 참고. */
+  --latin:'KoPub Dotum',var(--kr);
 
   --pad:clamp(20px,5vw,64px);
+}
+
+/* KoPub돋움체 — 한국출판인회의(KOPUS) 무료 배포. Google Fonts에 없어 저장소에
+   직접 넣어 자체 호스팅한다(fonts/kopub-dotum/, 라이선스 동봉). --latin 에서만 쓴다. */
+@font-face{
+  font-family:'KoPub Dotum';font-style:normal;font-weight:300;font-display:swap;
+  src:url('fonts/kopub-dotum/KoPubDotum-Light.woff') format('woff');
+}
+@font-face{
+  font-family:'KoPub Dotum';font-style:normal;font-weight:400;font-display:swap;
+  src:url('fonts/kopub-dotum/KoPubDotum-Medium.woff') format('woff');
+}
+@font-face{
+  font-family:'KoPub Dotum';font-style:normal;font-weight:700;font-display:swap;
+  src:url('fonts/kopub-dotum/KoPubDotum-Bold.woff') format('woff');
 }
 
 *{box-sizing:border-box}
@@ -100,7 +118,7 @@ header{
 /* 로고 마크. inline-block + vertical-align 로 텍스트 베이스라인에 맞춘다
    (.bar 가 align-items:baseline 이라 flex 로 바꾸면 nav 정렬이 흐트러진다) */
 .mark img{display:inline-block;height:26px;width:auto;vertical-align:-8px;margin-right:9px}
-.mark em{font-style:normal;font-weight:600;color:var(--green);margin-left:8px;font-size:17px;letter-spacing:.08em}
+.mark em{font-family:var(--latin);font-style:normal;font-weight:600;color:var(--green);margin-left:8px;font-size:17px;letter-spacing:.08em}
 nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,34px)}
 nav a{
   font-size:13.5px;font-weight:500;text-decoration:none;color:var(--muted);
@@ -125,6 +143,7 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
   margin:14px 0 0;
 }
 .hero .latin{
+  font-family:var(--latin);
   font-weight:600;font-size:clamp(16px,2.7vw,24px);color:var(--red);
   display:block;letter-spacing:.13em;margin-top:14px;
 }
@@ -178,7 +197,7 @@ section{padding:clamp(48px,7vw,92px) 0;border-top:1px solid var(--rule)}
 .book::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--red);border-right:1px solid var(--red)}
 .book .no{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.1em;flex:none}
 .book h3{font-size:18px;font-weight:600;letter-spacing:-.025em;margin:12px 0 0;line-height:1.4}
-.book .sub{font-size:10.5px;font-weight:500;letter-spacing:.13em;color:var(--muted);margin-top:7px;flex:none}
+.book .sub{font-family:var(--latin);font-size:10.5px;font-weight:500;letter-spacing:.13em;color:var(--muted);margin-top:7px;flex:none}
 .book .cover{width:100%;height:auto;margin:0 0 20px;flex:none}
 /* 설명 문단만 남는 공간을 흡수해야 카드 높이가 달라도 위쪽이 벌어지지 않는다 */
 .book p{font-size:14px;color:var(--body);margin:14px 0 0;flex:1}
