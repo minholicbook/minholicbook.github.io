@@ -149,8 +149,9 @@ nav a:hover{color:var(--ink);border-bottom-color:var(--green)}
 }
 .hero .latin{
   font-family:var(--latin);
-  /* 24px→29px — 위 한글 제목(h1) 마지막 줄 "디지털 패션 디자인"과 너비가 비슷해지도록 키움 */
-  font-weight:700;font-size:clamp(19px,3.3vw,29px);color:var(--red);
+  /* 29px→26px — 스트로크(아래)까지 더하면 29px는 위 h1 마지막 줄보다 시각적으로 더 길어
+     보였다. h1 줄 너비보다 분명히 짧게 여유를 두는 쪽으로 낮췄다 */
+  font-weight:700;font-size:clamp(17px,3vw,26px);color:var(--red);
   display:block;letter-spacing:.13em;margin-top:14px;
   /* KoPub돋움체 Bold가 IBM Plex Sans KR Bold보다 획이 가늘어, 합성 스트로크로 두께를 보강한다 */
   -webkit-text-stroke:.07em currentColor;paint-order:stroke fill;
